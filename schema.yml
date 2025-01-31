@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: authentik
-  version: 2025.2.4
+  version: 2024.12.3
   description: Making authentication simple.
   contact:
     email: hello@goauthentik.io
@@ -618,234 +618,6 @@ paths:
         schema:
           type: integer
         description: A unique integer value identifying this Duo Device.
-        required: true
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '204':
-          description: No response body
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /authenticators/admin/email/:
-    get:
-      operationId: authenticators_admin_email_list
-      description: Viewset for email authenticator devices (for admins)
-      parameters:
-      - in: query
-        name: name
-        schema:
-          type: string
-      - name: ordering
-        required: false
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: page
-        required: false
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: search
-        required: false
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedEmailDeviceList'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    post:
-      operationId: authenticators_admin_email_create
-      description: Viewset for email authenticator devices (for admins)
-      tags:
-      - authenticators
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EmailDeviceRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /authenticators/admin/email/{id}/:
-    get:
-      operationId: authenticators_admin_email_retrieve
-      description: Viewset for email authenticator devices (for admins)
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    put:
-      operationId: authenticators_admin_email_update
-      description: Viewset for email authenticator devices (for admins)
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EmailDeviceRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    patch:
-      operationId: authenticators_admin_email_partial_update
-      description: Viewset for email authenticator devices (for admins)
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedEmailDeviceRequest'
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    delete:
-      operationId: authenticators_admin_email_destroy
-      description: Viewset for email authenticator devices (for admins)
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
         required: true
       tags:
       - authenticators
@@ -2245,238 +2017,6 @@ paths:
         schema:
           type: integer
         description: A unique integer value identifying this Duo Device.
-        required: true
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsedBy'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /authenticators/email/:
-    get:
-      operationId: authenticators_email_list
-      description: Viewset for email authenticator devices
-      parameters:
-      - in: query
-        name: name
-        schema:
-          type: string
-      - name: ordering
-        required: false
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: page
-        required: false
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: search
-        required: false
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedEmailDeviceList'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /authenticators/email/{id}/:
-    get:
-      operationId: authenticators_email_retrieve
-      description: Viewset for email authenticator devices
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    put:
-      operationId: authenticators_email_update
-      description: Viewset for email authenticator devices
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EmailDeviceRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    patch:
-      operationId: authenticators_email_partial_update
-      description: Viewset for email authenticator devices
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedEmailDeviceRequest'
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailDevice'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    delete:
-      operationId: authenticators_email_destroy
-      description: Viewset for email authenticator devices
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
-        required: true
-      tags:
-      - authenticators
-      security:
-      - authentik: []
-      responses:
-        '204':
-          description: No response body
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /authenticators/email/{id}/used_by/:
-    get:
-      operationId: authenticators_email_used_by_list
-      description: Get a list of all objects that use this object
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Email Device.
         required: true
       tags:
       - authenticators
@@ -18899,6 +18439,287 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
+  /propertymappings/source/telegram/:
+    get:
+      operationId: propertymappings_source_telegram_list
+      description: TelegramSource PropertyMapping Viewset
+      parameters:
+      - in: query
+        name: managed
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: managed__isnull
+        schema:
+          type: boolean
+      - in: query
+        name: name
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTelegramSourcePropertyMappingList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    post:
+      operationId: propertymappings_source_telegram_create
+      description: TelegramSource PropertyMapping Viewset
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourcePropertyMappingRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /propertymappings/source/telegram/{pm_uuid}/:
+    get:
+      operationId: propertymappings_source_telegram_retrieve
+      description: TelegramSource PropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Telegram Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: propertymappings_source_telegram_update
+      description: TelegramSource PropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Telegram Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourcePropertyMappingRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: propertymappings_source_telegram_partial_update
+      description: TelegramSource PropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Telegram Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelegramSourcePropertyMappingRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: propertymappings_source_telegram_destroy
+      description: TelegramSource PropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Telegram Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /propertymappings/source/telegram/{pm_uuid}/used_by/:
+    get:
+      operationId: propertymappings_source_telegram_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Telegram Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
   /providers/all/:
     get:
       operationId: providers_all_list
@@ -23413,279 +23234,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
-  /providers/ssf/:
-    get:
-      operationId: providers_ssf_list
-      description: SSFProvider Viewset
-      parameters:
-      - in: query
-        name: application__isnull
-        schema:
-          type: boolean
-      - in: query
-        name: name__iexact
-        schema:
-          type: string
-      - name: ordering
-        required: false
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: page
-        required: false
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: search
-        required: false
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      tags:
-      - providers
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedSSFProviderList'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    post:
-      operationId: providers_ssf_create
-      description: SSFProvider Viewset
-      tags:
-      - providers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SSFProviderRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SSFProvider'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /providers/ssf/{id}/:
-    get:
-      operationId: providers_ssf_retrieve
-      description: SSFProvider Viewset
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Shared Signals Framework
-          Provider.
-        required: true
-      tags:
-      - providers
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SSFProvider'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    put:
-      operationId: providers_ssf_update
-      description: SSFProvider Viewset
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Shared Signals Framework
-          Provider.
-        required: true
-      tags:
-      - providers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SSFProviderRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SSFProvider'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    patch:
-      operationId: providers_ssf_partial_update
-      description: SSFProvider Viewset
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Shared Signals Framework
-          Provider.
-        required: true
-      tags:
-      - providers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedSSFProviderRequest'
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SSFProvider'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    delete:
-      operationId: providers_ssf_destroy
-      description: SSFProvider Viewset
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Shared Signals Framework
-          Provider.
-        required: true
-      tags:
-      - providers
-      security:
-      - authentik: []
-      responses:
-        '204':
-          description: No response body
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /providers/ssf/{id}/used_by/:
-    get:
-      operationId: providers_ssf_used_by_list
-      description: Get a list of all objects that use this object
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Shared Signals Framework
-          Provider.
-        required: true
-      tags:
-      - providers
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsedBy'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
   /rac/connection_tokens/:
     get:
       operationId: rac_connection_tokens_list
@@ -24363,7 +23911,6 @@ paths:
           - authentik_providers_saml.samlprovider
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
-          - authentik_providers_ssf.ssfprovider
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -24385,10 +23932,12 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_telegram.grouptelegramsourceconnection
+          - authentik_sources_telegram.telegramsource
+          - authentik_sources_telegram.telegramsourcepropertymapping
+          - authentik_sources_telegram.usertelegramsourceconnection
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
-          - authentik_stages_authenticator_email.authenticatoremailstage
-          - authentik_stages_authenticator_email.emaildevice
           - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
@@ -24607,7 +24156,6 @@ paths:
           - authentik_providers_saml.samlprovider
           - authentik_providers_scim.scimmapping
           - authentik_providers_scim.scimprovider
-          - authentik_providers_ssf.ssfprovider
           - authentik_rbac.role
           - authentik_sources_kerberos.groupkerberossourceconnection
           - authentik_sources_kerberos.kerberossource
@@ -24629,10 +24177,12 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_telegram.grouptelegramsourceconnection
+          - authentik_sources_telegram.telegramsource
+          - authentik_sources_telegram.telegramsourcepropertymapping
+          - authentik_sources_telegram.usertelegramsourceconnection
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
-          - authentik_stages_authenticator_email.authenticatoremailstage
-          - authentik_stages_authenticator_email.emaildevice
           - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
           - authentik_stages_authenticator_sms.authenticatorsmsstage
           - authentik_stages_authenticator_sms.smsdevice
@@ -25671,11 +25221,6 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
-      - in: query
-        name: pbm_uuid
-        schema:
-          type: string
-          format: uuid
       - name: search
         required: false
         in: query
@@ -26920,6 +26465,248 @@ paths:
         schema:
           type: integer
         description: A unique integer value identifying this Group SAML Source Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/group_connections/telegram/:
+    get:
+      operationId: sources_group_connections_telegram_list
+      description: Group-source connection Viewset
+      parameters:
+      - in: query
+        name: group
+        schema:
+          type: string
+          format: uuid
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: source__slug
+        schema:
+          type: string
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupTelegramSourceConnectionList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/group_connections/telegram/{id}/:
+    get:
+      operationId: sources_group_connections_telegram_retrieve
+      description: Group-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: sources_group_connections_telegram_update
+      description: Group-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupTelegramSourceConnectionRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: sources_group_connections_telegram_partial_update
+      description: Group-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupTelegramSourceConnectionRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: sources_group_connections_telegram_destroy
+      description: Group-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Group Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/group_connections/telegram/{id}/used_by/:
+    get:
+      operationId: sources_group_connections_telegram_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Group Telegram Source
+          Connection.
         required: true
       tags:
       - sources
@@ -29744,6 +29531,266 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
+  /sources/telegram/:
+    get:
+      operationId: sources_telegram_list
+      description: Telegram Source Viewset
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTelegramSourceList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    post:
+      operationId: sources_telegram_create
+      description: Telegram Source Viewset
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourceRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/telegram/{slug}/:
+    get:
+      operationId: sources_telegram_retrieve
+      description: Telegram Source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: sources_telegram_update
+      description: Telegram Source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelegramSourceRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: sources_telegram_partial_update
+      description: Telegram Source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelegramSourceRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelegramSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: sources_telegram_destroy
+      description: Telegram Source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/telegram/{slug}/used_by/:
+    get:
+      operationId: sources_telegram_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
   /sources/user_connections/all/:
     get:
       operationId: sources_user_connections_all_list
@@ -31053,22 +31100,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
-  /ssf/streams/:
+  /sources/user_connections/telegram/:
     get:
-      operationId: ssf_streams_list
-      description: SSFStream Viewset
+      operationId: sources_user_connections_telegram_list
+      description: Source Viewset
       parameters:
-      - in: query
-        name: delivery_method
-        schema:
-          type: string
-          enum:
-          - https://schemas.openid.net/secevent/risc/delivery-method/poll
-          - https://schemas.openid.net/secevent/risc/delivery-method/push
-      - in: query
-        name: endpoint_url
-        schema:
-          type: string
       - name: ordering
         required: false
         in: query
@@ -31087,18 +31123,18 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
-      - in: query
-        name: provider
-        schema:
-          type: integer
       - name: search
         required: false
         in: query
         description: A search term.
         schema:
           type: string
+      - in: query
+        name: source__slug
+        schema:
+          type: string
       tags:
-      - ssf
+      - sources
       security:
       - authentik: []
       responses:
@@ -31106,7 +31142,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedSSFStreamList'
+                $ref: '#/components/schemas/PaginatedUserTelegramSourceConnectionList'
           description: ''
         '400':
           content:
@@ -31120,20 +31156,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
-  /ssf/streams/{uuid}/:
+    post:
+      operationId: sources_user_connections_telegram_create
+      description: Source Viewset
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserTelegramSourceConnectionRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/user_connections/telegram/{id}/:
     get:
-      operationId: ssf_streams_retrieve
-      description: SSFStream Viewset
+      operationId: sources_user_connections_telegram_retrieve
+      description: Source Viewset
       parameters:
       - in: path
-        name: uuid
+        name: id
         schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this SSF Stream.
+          type: integer
+        description: A unique integer value identifying this User Telegram Source
+          Connection.
         required: true
       tags:
-      - ssf
+      - sources
       security:
       - authentik: []
       responses:
@@ -31141,7 +31209,153 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SSFStream'
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: sources_user_connections_telegram_update
+      description: Source Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserTelegramSourceConnectionRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: sources_user_connections_telegram_partial_update
+      description: Source Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserTelegramSourceConnectionRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTelegramSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: sources_user_connections_telegram_destroy
+      description: Source Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/user_connections/telegram/{id}/used_by/:
+    get:
+      operationId: sources_user_connections_telegram_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User Telegram Source
+          Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
           description: ''
         '400':
           content:
@@ -31726,337 +31940,6 @@ paths:
           type: string
           format: uuid
         description: A UUID string identifying this Duo Authenticator Setup Stage.
-        required: true
-      tags:
-      - stages
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsedBy'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /stages/authenticator/email/:
-    get:
-      operationId: stages_authenticator_email_list
-      description: AuthenticatorEmailStage Viewset
-      parameters:
-      - in: query
-        name: configure_flow
-        schema:
-          type: string
-          format: uuid
-      - in: query
-        name: friendly_name
-        schema:
-          type: string
-      - in: query
-        name: from_address
-        schema:
-          type: string
-      - in: query
-        name: host
-        schema:
-          type: string
-      - in: query
-        name: name
-        schema:
-          type: string
-      - name: ordering
-        required: false
-        in: query
-        description: Which field to use when ordering the results.
-        schema:
-          type: string
-      - name: page
-        required: false
-        in: query
-        description: A page number within the paginated result set.
-        schema:
-          type: integer
-      - name: page_size
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - in: query
-        name: password
-        schema:
-          type: string
-      - in: query
-        name: port
-        schema:
-          type: integer
-      - name: search
-        required: false
-        in: query
-        description: A search term.
-        schema:
-          type: string
-      - in: query
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-      - in: query
-        name: subject
-        schema:
-          type: string
-      - in: query
-        name: template
-        schema:
-          type: string
-      - in: query
-        name: timeout
-        schema:
-          type: integer
-      - in: query
-        name: token_expiry
-        schema:
-          type: string
-      - in: query
-        name: use_global_settings
-        schema:
-          type: boolean
-      - in: query
-        name: use_ssl
-        schema:
-          type: boolean
-      - in: query
-        name: use_tls
-        schema:
-          type: boolean
-      - in: query
-        name: username
-        schema:
-          type: string
-      tags:
-      - stages
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginatedAuthenticatorEmailStageList'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    post:
-      operationId: stages_authenticator_email_create
-      description: AuthenticatorEmailStage Viewset
-      tags:
-      - stages
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthenticatorEmailStageRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthenticatorEmailStage'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /stages/authenticator/email/{stage_uuid}/:
-    get:
-      operationId: stages_authenticator_email_retrieve
-      description: AuthenticatorEmailStage Viewset
-      parameters:
-      - in: path
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this Email Authenticator Setup Stage.
-        required: true
-      tags:
-      - stages
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthenticatorEmailStage'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    put:
-      operationId: stages_authenticator_email_update
-      description: AuthenticatorEmailStage Viewset
-      parameters:
-      - in: path
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this Email Authenticator Setup Stage.
-        required: true
-      tags:
-      - stages
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuthenticatorEmailStageRequest'
-        required: true
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthenticatorEmailStage'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    patch:
-      operationId: stages_authenticator_email_partial_update
-      description: AuthenticatorEmailStage Viewset
-      parameters:
-      - in: path
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this Email Authenticator Setup Stage.
-        required: true
-      tags:
-      - stages
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchedAuthenticatorEmailStageRequest'
-      security:
-      - authentik: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthenticatorEmailStage'
-          description: ''
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-    delete:
-      operationId: stages_authenticator_email_destroy
-      description: AuthenticatorEmailStage Viewset
-      parameters:
-      - in: path
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this Email Authenticator Setup Stage.
-        required: true
-      tags:
-      - stages
-      security:
-      - authentik: []
-      responses:
-        '204':
-          description: No response body
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationError'
-          description: ''
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenericError'
-          description: ''
-  /stages/authenticator/email/{stage_uuid}/used_by/:
-    get:
-      operationId: stages_authenticator_email_used_by_list
-      description: Get a list of all objects that use this object
-      parameters:
-      - in: path
-        name: stage_uuid
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this Email Authenticator Setup Stage.
         required: true
       tags:
       - stages
@@ -39482,7 +39365,6 @@ components:
       - authentik.providers.ldap
       - authentik.providers.oauth2
       - authentik.providers.proxy
-      - authentik.providers.rac
       - authentik.providers.radius
       - authentik.providers.saml
       - authentik.providers.scim
@@ -39491,12 +39373,12 @@ components:
       - authentik.sources.kerberos
       - authentik.sources.ldap
       - authentik.sources.oauth
+      - authentik.sources.telegram
       - authentik.sources.plex
       - authentik.sources.saml
       - authentik.sources.scim
       - authentik.stages.authenticator
       - authentik.stages.authenticator_duo
-      - authentik.stages.authenticator_email
       - authentik.stages.authenticator_sms
       - authentik.stages.authenticator_static
       - authentik.stages.authenticator_totp
@@ -39523,7 +39405,7 @@ components:
       - authentik.enterprise.audit
       - authentik.enterprise.providers.google_workspace
       - authentik.enterprise.providers.microsoft_entra
-      - authentik.enterprise.providers.ssf
+      - authentik.enterprise.providers.rac
       - authentik.enterprise.stages.authenticator_endpoint_gdtc
       - authentik.enterprise.stages.source
       - authentik.events
@@ -40022,188 +39904,6 @@ components:
       - api_hostname
       - client_id
       - client_secret
-      - name
-    AuthenticatorEmailChallenge:
-      type: object
-      description: Authenticator Email Setup challenge
-      properties:
-        flow_info:
-          $ref: '#/components/schemas/ContextualFlowInfo'
-        component:
-          type: string
-          default: ak-stage-authenticator-email
-        response_errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorDetail'
-        pending_user:
-          type: string
-        pending_user_avatar:
-          type: string
-        email:
-          type: string
-          nullable: true
-        email_required:
-          type: boolean
-          default: true
-      required:
-      - pending_user
-      - pending_user_avatar
-    AuthenticatorEmailChallengeResponseRequest:
-      type: object
-      description: Authenticator Email Challenge response, device is set by get_response_instance
-      properties:
-        component:
-          type: string
-          minLength: 1
-          default: ak-stage-authenticator-email
-        code:
-          type: integer
-        email:
-          type: string
-          minLength: 1
-    AuthenticatorEmailStage:
-      type: object
-      description: AuthenticatorEmailStage Serializer
-      properties:
-        pk:
-          type: string
-          format: uuid
-          readOnly: true
-          title: Stage uuid
-        name:
-          type: string
-        component:
-          type: string
-          description: Get object type so that we know how to edit the object
-          readOnly: true
-        verbose_name:
-          type: string
-          description: Return object's verbose_name
-          readOnly: true
-        verbose_name_plural:
-          type: string
-          description: Return object's plural verbose_name
-          readOnly: true
-        meta_model_name:
-          type: string
-          description: Return internal model name
-          readOnly: true
-        flow_set:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSet'
-        configure_flow:
-          type: string
-          format: uuid
-          nullable: true
-          description: Flow used by an authenticated user to configure this Stage.
-            If empty, user will not be able to configure this stage.
-        friendly_name:
-          type: string
-          nullable: true
-        use_global_settings:
-          type: boolean
-          description: When enabled, global Email connection settings will be used
-            and connection settings below will be ignored.
-        host:
-          type: string
-        port:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        username:
-          type: string
-        password:
-          type: string
-        use_tls:
-          type: boolean
-        use_ssl:
-          type: boolean
-        timeout:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        from_address:
-          type: string
-          format: email
-          maxLength: 254
-        subject:
-          type: string
-        token_expiry:
-          type: string
-          description: 'Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).'
-        template:
-          type: string
-      required:
-      - component
-      - meta_model_name
-      - name
-      - pk
-      - verbose_name
-      - verbose_name_plural
-    AuthenticatorEmailStageRequest:
-      type: object
-      description: AuthenticatorEmailStage Serializer
-      properties:
-        name:
-          type: string
-          minLength: 1
-        flow_set:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-        configure_flow:
-          type: string
-          format: uuid
-          nullable: true
-          description: Flow used by an authenticated user to configure this Stage.
-            If empty, user will not be able to configure this stage.
-        friendly_name:
-          type: string
-          nullable: true
-          minLength: 1
-        use_global_settings:
-          type: boolean
-          description: When enabled, global Email connection settings will be used
-            and connection settings below will be ignored.
-        host:
-          type: string
-          minLength: 1
-        port:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        username:
-          type: string
-        password:
-          type: string
-        use_tls:
-          type: boolean
-        use_ssl:
-          type: boolean
-        timeout:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        from_address:
-          type: string
-          format: email
-          minLength: 1
-          maxLength: 254
-        subject:
-          type: string
-          minLength: 1
-        token_expiry:
-          type: string
-          minLength: 1
-          description: 'Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).'
-        template:
-          type: string
-          minLength: 1
-      required:
       - name
     AuthenticatorEndpointGDTCStage:
       type: object
@@ -41525,7 +41225,6 @@ components:
       - $ref: '#/components/schemas/AccessDeniedChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/AuthenticatorDuoChallenge'
-      - $ref: '#/components/schemas/AuthenticatorEmailChallenge'
       - $ref: '#/components/schemas/AuthenticatorSMSChallenge'
       - $ref: '#/components/schemas/AuthenticatorStaticChallenge'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallenge'
@@ -41545,6 +41244,7 @@ components:
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
       - $ref: '#/components/schemas/PromptChallenge'
       - $ref: '#/components/schemas/RedirectChallenge'
+      - $ref: '#/components/schemas/RedirectWithContextChallenge'
       - $ref: '#/components/schemas/SessionEndChallenge'
       - $ref: '#/components/schemas/ShellChallenge'
       - $ref: '#/components/schemas/UserLoginChallenge'
@@ -41554,7 +41254,6 @@ components:
           ak-stage-access-denied: '#/components/schemas/AccessDeniedChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallenge'
-          ak-stage-authenticator-email: '#/components/schemas/AuthenticatorEmailChallenge'
           ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallenge'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallenge'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallenge'
@@ -41574,6 +41273,7 @@ components:
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
           ak-stage-prompt: '#/components/schemas/PromptChallenge'
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
+          xak-flow-redirect-with-context: '#/components/schemas/RedirectWithContextChallenge'
           ak-stage-session-end: '#/components/schemas/SessionEndChallenge'
           xak-flow-shell: '#/components/schemas/ShellChallenge'
           ak-stage-user-login: '#/components/schemas/UserLoginChallenge'
@@ -42118,11 +41818,6 @@ components:
       - matched_domain
       - ui_footer_links
       - ui_theme
-    DeliveryMethodEnum:
-      enum:
-      - https://schemas.openid.net/secevent/risc/delivery-method/push
-      - https://schemas.openid.net/secevent/risc/delivery-method/poll
-      type: string
     DeniedActionEnum:
       enum:
       - message_continue
@@ -42319,7 +42014,6 @@ components:
       - webauthn
       - duo
       - sms
-      - email
       type: string
     DigestAlgorithmEnum:
       enum:
@@ -42682,42 +42376,6 @@ components:
           type: string
           minLength: 1
           default: ak-stage-email
-    EmailDevice:
-      type: object
-      description: Serializer for email authenticator devices
-      properties:
-        name:
-          type: string
-          description: The human-readable name of this device.
-          maxLength: 64
-        pk:
-          type: integer
-          readOnly: true
-          title: ID
-        email:
-          type: string
-          format: email
-          readOnly: true
-        user:
-          allOf:
-          - $ref: '#/components/schemas/GroupMember'
-          readOnly: true
-      required:
-      - email
-      - name
-      - pk
-      - user
-    EmailDeviceRequest:
-      type: object
-      description: Serializer for email authenticator devices
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: The human-readable name of this device.
-          maxLength: 64
-      required:
-      - name
     EmailStage:
       type: object
       description: EmailStage Serializer
@@ -43198,12 +42856,6 @@ components:
       - application
       - counted_events
       - unique_users
-    EventsRequestedEnum:
-      enum:
-      - https://schemas.openid.net/secevent/caep/event-type/session-revoked
-      - https://schemas.openid.net/secevent/caep/event-type/credential-change
-      - https://schemas.openid.net/secevent/ssf/event-type/verification
-      type: string
     ExpiringBaseGrantModel:
       type: object
       description: Serializer for BaseGrantModel and ExpiringBaseGrant
@@ -43518,7 +43170,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AppleChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
-      - $ref: '#/components/schemas/AuthenticatorEmailChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
       - $ref: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
@@ -43537,13 +43188,13 @@ components:
       - $ref: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
       - $ref: '#/components/schemas/PromptChallengeResponseRequest'
       - $ref: '#/components/schemas/RedirectChallengeResponseRequest'
+      - $ref: '#/components/schemas/RedirectWithContextChallengeResponseRequest'
       - $ref: '#/components/schemas/UserLoginChallengeResponseRequest'
       discriminator:
         propertyName: component
         mapping:
           ak-source-oauth-apple: '#/components/schemas/AppleChallengeResponseRequest'
           ak-stage-authenticator-duo: '#/components/schemas/AuthenticatorDuoChallengeResponseRequest'
-          ak-stage-authenticator-email: '#/components/schemas/AuthenticatorEmailChallengeResponseRequest'
           ak-stage-authenticator-sms: '#/components/schemas/AuthenticatorSMSChallengeResponseRequest'
           ak-stage-authenticator-static: '#/components/schemas/AuthenticatorStaticChallengeResponseRequest'
           ak-stage-authenticator-totp: '#/components/schemas/AuthenticatorTOTPChallengeResponseRequest'
@@ -43562,6 +43213,7 @@ components:
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallengeResponseRequest'
           ak-stage-prompt: '#/components/schemas/PromptChallengeResponseRequest'
           xak-flow-redirect: '#/components/schemas/RedirectChallengeResponseRequest'
+          xak-flow-redirect-with-context: '#/components/schemas/RedirectWithContextChallengeResponseRequest'
           ak-stage-user-login: '#/components/schemas/UserLoginChallengeResponseRequest'
     FlowDesignationEnum:
       enum:
@@ -44006,27 +43658,6 @@ components:
           items:
             $ref: '#/components/schemas/DetailedCountryField'
           readOnly: true
-        check_history_distance:
-          type: boolean
-        history_max_distance_km:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        distance_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        history_login_count:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        check_impossible_travel:
-          type: boolean
-        impossible_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
       required:
       - bound_to
       - component
@@ -44059,27 +43690,6 @@ components:
           items:
             $ref: '#/components/schemas/CountryCodeEnum'
           maxItems: 249
-        check_history_distance:
-          type: boolean
-        history_max_distance_km:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        distance_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        history_login_count:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        check_impossible_travel:
-          type: boolean
-        impossible_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
       required:
       - countries
       - name
@@ -44706,6 +44316,54 @@ components:
       - source
       - source_obj
     GroupSAMLSourceConnectionRequest:
+      type: object
+      description: OAuth Group-Source connection Serializer
+      properties:
+        group:
+          type: string
+          format: uuid
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
+      required:
+      - group
+      - identifier
+      - source
+    GroupTelegramSourceConnection:
+      type: object
+      description: OAuth Group-Source connection Serializer
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        group:
+          type: string
+          format: uuid
+        source:
+          type: string
+          format: uuid
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - group
+      - identifier
+      - pk
+      - source
+      - source_obj
+    GroupTelegramSourceConnectionRequest:
       type: object
       description: OAuth Group-Source connection Serializer
       properties:
@@ -46276,12 +45934,14 @@ components:
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
+      - $ref: '#/components/schemas/RedirectWithContextChallenge'
       discriminator:
         propertyName: component
         mapping:
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
+          xak-flow-redirect-with-context: '#/components/schemas/RedirectWithContextChallenge'
     LoginMetrics:
       type: object
       description: Login Metrics per 1h
@@ -46625,9 +46285,6 @@ components:
       - authentik_providers_oauth2.scopemapping
       - authentik_providers_oauth2.oauth2provider
       - authentik_providers_proxy.proxyprovider
-      - authentik_providers_rac.racprovider
-      - authentik_providers_rac.endpoint
-      - authentik_providers_rac.racpropertymapping
       - authentik_providers_radius.radiusprovider
       - authentik_providers_radius.radiusproviderpropertymapping
       - authentik_providers_saml.samlprovider
@@ -46645,6 +46302,10 @@ components:
       - authentik_sources_oauth.oauthsourcepropertymapping
       - authentik_sources_oauth.useroauthsourceconnection
       - authentik_sources_oauth.groupoauthsourceconnection
+      - authentik_sources_telegram.telegramsource
+      - authentik_sources_telegram.telegramsourcepropertymapping
+      - authentik_sources_telegram.usertelegramsourceconnection
+      - authentik_sources_telegram.grouptelegramsourceconnection
       - authentik_sources_plex.plexsource
       - authentik_sources_plex.plexsourcepropertymapping
       - authentik_sources_plex.userplexsourceconnection
@@ -46657,8 +46318,6 @@ components:
       - authentik_sources_scim.scimsourcepropertymapping
       - authentik_stages_authenticator_duo.authenticatorduostage
       - authentik_stages_authenticator_duo.duodevice
-      - authentik_stages_authenticator_email.authenticatoremailstage
-      - authentik_stages_authenticator_email.emaildevice
       - authentik_stages_authenticator_sms.authenticatorsmsstage
       - authentik_stages_authenticator_sms.smsdevice
       - authentik_stages_authenticator_static.authenticatorstaticstage
@@ -46697,7 +46356,9 @@ components:
       - authentik_providers_google_workspace.googleworkspaceprovidermapping
       - authentik_providers_microsoft_entra.microsoftentraprovider
       - authentik_providers_microsoft_entra.microsoftentraprovidermapping
-      - authentik_providers_ssf.ssfprovider
+      - authentik_providers_rac.racprovider
+      - authentik_providers_rac.endpoint
+      - authentik_providers_rac.racpropertymapping
       - authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage
       - authentik_stages_source.sourcestage
       - authentik_events.event
@@ -47817,18 +47478,6 @@ components:
       required:
       - pagination
       - results
-    PaginatedAuthenticatorEmailStageList:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthenticatorEmailStage'
-      required:
-      - pagination
-      - results
     PaginatedAuthenticatorEndpointGDTCStageList:
       type: object
       properties:
@@ -48042,18 +47691,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DuoDevice'
-      required:
-      - pagination
-      - results
-    PaginatedEmailDeviceList:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailDevice'
       required:
       - pagination
       - results
@@ -48306,6 +47943,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupSAMLSourceConnection'
+      required:
+      - pagination
+      - results
+    PaginatedGroupTelegramSourceConnectionList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupTelegramSourceConnection'
       required:
       - pagination
       - results
@@ -49029,30 +48678,6 @@ components:
       required:
       - pagination
       - results
-    PaginatedSSFProviderList:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SSFProvider'
-      required:
-      - pagination
-      - results
-    PaginatedSSFStreamList:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SSFStream'
-      required:
-      - pagination
-      - results
     PaginatedScopeMappingList:
       type: object
       properties:
@@ -49146,6 +48771,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TOTPDevice'
+      required:
+      - pagination
+      - results
+    PaginatedTelegramSourceList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelegramSource'
+      required:
+      - pagination
+      - results
+    PaginatedTelegramSourcePropertyMappingList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelegramSourcePropertyMapping'
       required:
       - pagination
       - results
@@ -49314,6 +48963,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserSourceConnection'
+      required:
+      - pagination
+      - results
+    PaginatedUserTelegramSourceConnectionList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserTelegramSourceConnection'
       required:
       - pagination
       - results
@@ -49813,65 +49474,6 @@ components:
         admin_secret_key:
           type: string
           writeOnly: true
-    PatchedAuthenticatorEmailStageRequest:
-      type: object
-      description: AuthenticatorEmailStage Serializer
-      properties:
-        name:
-          type: string
-          minLength: 1
-        flow_set:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowSetRequest'
-        configure_flow:
-          type: string
-          format: uuid
-          nullable: true
-          description: Flow used by an authenticated user to configure this Stage.
-            If empty, user will not be able to configure this stage.
-        friendly_name:
-          type: string
-          nullable: true
-          minLength: 1
-        use_global_settings:
-          type: boolean
-          description: When enabled, global Email connection settings will be used
-            and connection settings below will be ignored.
-        host:
-          type: string
-          minLength: 1
-        port:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        username:
-          type: string
-        password:
-          type: string
-        use_tls:
-          type: boolean
-        use_ssl:
-          type: boolean
-        timeout:
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-        from_address:
-          type: string
-          format: email
-          minLength: 1
-          maxLength: 254
-        subject:
-          type: string
-          minLength: 1
-        token_expiry:
-          type: string
-          minLength: 1
-          description: 'Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).'
-        template:
-          type: string
-          minLength: 1
     PatchedAuthenticatorEndpointGDTCStageRequest:
       type: object
       description: AuthenticatorEndpointGDTCStage Serializer
@@ -50323,15 +49925,6 @@ components:
           minLength: 1
           description: The human-readable name of this device.
           maxLength: 64
-    PatchedEmailDeviceRequest:
-      type: object
-      description: Serializer for email authenticator devices
-      properties:
-        name:
-          type: string
-          minLength: 1
-          description: The human-readable name of this device.
-          maxLength: 64
     PatchedEmailStageRequest:
       type: object
       description: EmailStage Serializer
@@ -50599,27 +50192,6 @@ components:
           items:
             $ref: '#/components/schemas/CountryCodeEnum'
           maxItems: 249
-        check_history_distance:
-          type: boolean
-        history_max_distance_km:
-          type: integer
-          maximum: 9223372036854775807
-          minimum: 0
-          format: int64
-        distance_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        history_login_count:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        check_impossible_travel:
-          type: boolean
-        impossible_tolerance_km:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
     PatchedGoogleWorkspaceProviderMappingRequest:
       type: object
       description: GoogleWorkspaceProviderMapping Serializer
@@ -50745,6 +50317,19 @@ components:
             type: string
             format: uuid
     PatchedGroupSAMLSourceConnectionRequest:
+      type: object
+      description: OAuth Group-Source connection Serializer
+      properties:
+        group:
+          type: string
+          format: uuid
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
+    PatchedGroupTelegramSourceConnectionRequest:
       type: object
       description: OAuth Group-Source connection Serializer
       properties:
@@ -52511,24 +52096,6 @@ components:
           minLength: 1
           description: The human-readable name of this device.
           maxLength: 64
-    PatchedSSFProviderRequest:
-      type: object
-      description: SSFProvider Serializer
-      properties:
-        name:
-          type: string
-          minLength: 1
-        signing_key:
-          type: string
-          format: uuid
-          description: Key used to sign the SSF Events.
-        oidc_auth_providers:
-          type: array
-          items:
-            type: integer
-        event_retention:
-          type: string
-          minLength: 1
     PatchedScopeMappingRequest:
       type: object
       description: ScopeMapping Serializer
@@ -52637,6 +52204,84 @@ components:
           minLength: 1
           description: The human-readable name of this device.
           maxLength: 64
+    PatchedTelegramSourcePropertyMappingRequest:
+      type: object
+      description: Telegram PropertyMapping Serializer
+      properties:
+        managed:
+          type: string
+          nullable: true
+          minLength: 1
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+          minLength: 1
+        expression:
+          type: string
+          minLength: 1
+    PatchedTelegramSourceRequest:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Source's display Name.
+        slug:
+          type: string
+          minLength: 1
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          type: string
+          minLength: 1
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        bot_id:
+          type: string
+          minLength: 1
+          description: Telegram bot id can be obtained from telegram API
+        bot_token:
+          type: string
+          minLength: 1
+          description: Telegram bot token can be obtained from BotFather
     PatchedTenantRequest:
       type: object
       description: Tenant Serializer
@@ -52840,6 +52485,18 @@ components:
         source:
           type: string
           format: uuid
+    PatchedUserTelegramSourceConnectionRequest:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
     PatchedUserWriteStageRequest:
       type: object
       description: UserWriteStage Serializer
@@ -53810,7 +53467,6 @@ components:
       - authentik_providers_radius.radiusprovider
       - authentik_providers_saml.samlprovider
       - authentik_providers_scim.scimprovider
-      - authentik_providers_ssf.ssfprovider
       type: string
     ProviderRequest:
       type: object
@@ -54787,6 +54443,35 @@ components:
       required:
       - matching_mode
       - url
+    RedirectWithContextChallenge:
+      type: object
+      description: Challenge type to redirect the client and save context
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          type: string
+          default: xak-flow-redirect-with-context
+        response_errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+        to:
+          type: string
+        context: {}
+      required:
+      - context
+      - to
+    RedirectWithContextChallengeResponseRequest:
+      type: object
+      description: Pseudo class for apple response
+      properties:
+        component:
+          type: string
+          minLength: 1
+          default: xak-flow-redirect-with-context
     Reputation:
       type: object
       description: Reputation Serializer
@@ -56239,120 +55924,6 @@ components:
           maxLength: 64
       required:
       - name
-    SSFProvider:
-      type: object
-      description: SSFProvider Serializer
-      properties:
-        pk:
-          type: integer
-          readOnly: true
-          title: ID
-        name:
-          type: string
-        component:
-          type: string
-          description: Get object component so that we know how to edit the object
-          readOnly: true
-        verbose_name:
-          type: string
-          description: Return object's verbose_name
-          readOnly: true
-        verbose_name_plural:
-          type: string
-          description: Return object's plural verbose_name
-          readOnly: true
-        meta_model_name:
-          type: string
-          description: Return internal model name
-          readOnly: true
-        signing_key:
-          type: string
-          format: uuid
-          description: Key used to sign the SSF Events.
-        token_obj:
-          allOf:
-          - $ref: '#/components/schemas/Token'
-          readOnly: true
-        oidc_auth_providers:
-          type: array
-          items:
-            type: integer
-        ssf_url:
-          type: string
-          nullable: true
-          readOnly: true
-        event_retention:
-          type: string
-      required:
-      - component
-      - meta_model_name
-      - name
-      - pk
-      - signing_key
-      - ssf_url
-      - token_obj
-      - verbose_name
-      - verbose_name_plural
-    SSFProviderRequest:
-      type: object
-      description: SSFProvider Serializer
-      properties:
-        name:
-          type: string
-          minLength: 1
-        signing_key:
-          type: string
-          format: uuid
-          description: Key used to sign the SSF Events.
-        oidc_auth_providers:
-          type: array
-          items:
-            type: integer
-        event_retention:
-          type: string
-          minLength: 1
-      required:
-      - name
-      - signing_key
-    SSFStream:
-      type: object
-      description: SSFStream Serializer
-      properties:
-        pk:
-          type: string
-          format: uuid
-          readOnly: true
-          title: Uuid
-        provider:
-          type: integer
-        provider_obj:
-          allOf:
-          - $ref: '#/components/schemas/SSFProvider'
-          readOnly: true
-        delivery_method:
-          $ref: '#/components/schemas/DeliveryMethodEnum'
-        endpoint_url:
-          type: string
-          nullable: true
-        events_requested:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventsRequestedEnum'
-        format:
-          type: string
-        aud:
-          type: array
-          items:
-            type: string
-        iss:
-          type: string
-      required:
-      - delivery_method
-      - format
-      - iss
-      - pk
-      - provider
-      - provider_obj
     ScopeMapping:
       type: object
       description: ScopeMapping Serializer
@@ -57299,6 +56870,242 @@ components:
           maxLength: 64
       required:
       - name
+    TelegramSource:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        pk:
+          type: string
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+        name:
+          type: string
+          description: Source's display Name.
+        slug:
+          type: string
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        component:
+          type: string
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+        verbose_name:
+          type: string
+          description: Return object's verbose_name
+          readOnly: true
+        verbose_name_plural:
+          type: string
+          description: Return object's plural verbose_name
+          readOnly: true
+        meta_model_name:
+          type: string
+          description: Return internal model name
+          readOnly: true
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        managed:
+          type: string
+          nullable: true
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+          readOnly: true
+        user_path_template:
+          type: string
+        icon:
+          type: string
+          readOnly: true
+        callback_url:
+          type: string
+          description: Get OAuth Callback URL
+          readOnly: true
+        authorization_url:
+          type: string
+          description: Get OAuth Authorization URL
+          readOnly: true
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        bot_id:
+          type: string
+          description: Telegram bot id can be obtained from telegram API
+        bot_token:
+          type: string
+          description: Telegram bot token can be obtained from BotFather
+      required:
+      - authorization_url
+      - callback_url
+      - component
+      - icon
+      - managed
+      - meta_model_name
+      - name
+      - pk
+      - slug
+      - verbose_name
+      - verbose_name_plural
+    TelegramSourcePropertyMapping:
+      type: object
+      description: Telegram PropertyMapping Serializer
+      properties:
+        pk:
+          type: string
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+        managed:
+          type: string
+          nullable: true
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          type: string
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+        verbose_name:
+          type: string
+          description: Return object's verbose_name
+          readOnly: true
+        verbose_name_plural:
+          type: string
+          description: Return object's plural verbose_name
+          readOnly: true
+        meta_model_name:
+          type: string
+          description: Return internal model name
+          readOnly: true
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+    TelegramSourcePropertyMappingRequest:
+      type: object
+      description: Telegram PropertyMapping Serializer
+      properties:
+        managed:
+          type: string
+          nullable: true
+          minLength: 1
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+          minLength: 1
+        expression:
+          type: string
+          minLength: 1
+      required:
+      - expression
+      - name
+    TelegramSourceRequest:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Source's display Name.
+        slug:
+          type: string
+          minLength: 1
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          type: string
+          minLength: 1
+        group_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/GroupMatchingModeEnum'
+          description: How the source determines if an existing group should be used
+            or a new group created.
+        bot_id:
+          type: string
+          minLength: 1
+          description: Telegram bot id can be obtained from telegram API
+        bot_token:
+          type: string
+          minLength: 1
+          description: Telegram bot token can be obtained from BotFather
+      required:
+      - name
+      - slug
     Tenant:
       type: object
       description: Tenant Serializer
@@ -57675,16 +57482,11 @@ components:
           type: string
           format: uuid
           readOnly: true
-        password_change_date:
-          type: string
-          format: date-time
-          readOnly: true
       required:
       - avatar
       - groups_obj
       - is_superuser
       - name
-      - password_change_date
       - pk
       - uid
       - username
@@ -58554,6 +58356,52 @@ components:
       required:
       - source
       - user
+    UserTelegramSourceConnection:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        identifier:
+          type: string
+      required:
+      - created
+      - identifier
+      - pk
+      - source
+      - source_obj
+      - user
+    UserTelegramSourceConnectionRequest:
+      type: object
+      description: Telegram Source Serializer
+      properties:
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
+      required:
+      - identifier
+      - source
+      - user
     UserTypeEnum:
       enum:
       - internal
@@ -58804,7 +58652,6 @@ components:
       - $ref: '#/components/schemas/RadiusProviderRequest'
       - $ref: '#/components/schemas/SAMLProviderRequest'
       - $ref: '#/components/schemas/SCIMProviderRequest'
-      - $ref: '#/components/schemas/SSFProviderRequest'
       discriminator:
         propertyName: provider_model
         mapping:
@@ -58817,7 +58664,6 @@ components:
           authentik_providers_radius.radiusprovider: '#/components/schemas/RadiusProviderRequest'
           authentik_providers_saml.samlprovider: '#/components/schemas/SAMLProviderRequest'
           authentik_providers_scim.scimprovider: '#/components/schemas/SCIMProviderRequest'
-          authentik_providers_ssf.ssfprovider: '#/components/schemas/SSFProviderRequest'
   securitySchemes:
     authentik:
       type: http
