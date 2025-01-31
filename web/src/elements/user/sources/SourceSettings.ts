@@ -4,6 +4,7 @@ import { EVENT_REFRESH } from "@goauthentik/common/constants";
 import { AKElement } from "@goauthentik/elements/Base";
 import "@goauthentik/elements/EmptyState";
 import "@goauthentik/elements/user/sources/SourceSettingsOAuth";
+import "@goauthentik/elements/user/sources/SourceSettingsTelegram";
 import "@goauthentik/elements/user/sources/SourceSettingsPlex";
 import "@goauthentik/elements/user/sources/SourceSettingsSAML";
 
@@ -87,6 +88,14 @@ export class UserSourceSettingsPage extends AKElement {
                     .configureUrl=${this.canConnect ? source.configureUrl : undefined}
                 >
                 </ak-user-settings-source-oauth>`;
+            case "ak-user-settings-source-telegram":
+                return html`<ak-user-settings-source-telegram
+                    objectId=${source.objectUid}
+                    title=${source.title}
+                    connectionPk=${connectionPk}
+                    .configureUrl=${this.canConnect ? source.configureUrl : undefined}
+                >
+                </ak-user-settings-source-telegram>`;
             case "ak-user-settings-source-plex":
                 return html`<ak-user-settings-source-plex
                     objectId=${source.objectUid}
