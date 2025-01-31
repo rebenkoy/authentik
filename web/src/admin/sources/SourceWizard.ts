@@ -1,4 +1,5 @@
 import "@goauthentik/admin/sources/kerberos/KerberosSourceForm";
+import "@goauthentik/admin/sources/telegram/TelegramSourceForm";
 import "@goauthentik/admin/sources/ldap/LDAPSourceForm";
 import "@goauthentik/admin/sources/oauth/OAuthSourceForm";
 import "@goauthentik/admin/sources/plex/PlexSourceForm";
