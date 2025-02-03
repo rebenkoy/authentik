@@ -12,8 +12,9 @@ from rest_framework.exceptions import ValidationError
 
 from authentik.core.middleware import SESSION_KEY_IMPERSONATE_USER
 from authentik.core.models import USER_ATTRIBUTE_SOURCES, User, UserSourceConnection, UserTypes
-from authentik.core.sources.stage import PLAN_CONTEXT_SOURCES_CONNECTION
+from authentik.core.sources.stage import PLAN_CONTEXT_SOURCES_CONNECTION, PostSourceStage
 from authentik.events.utils import sanitize_item
+from authentik.flows.models import in_memory_stage
 from authentik.flows.planner import PLAN_CONTEXT_PENDING_USER
 from authentik.flows.stage import StageView
 from authentik.flows.views.executor import FlowExecutorView
@@ -147,6 +148,12 @@ class UserWriteStageView(StageView):
             if connection.source.name not in user.attributes[USER_ATTRIBUTE_SOURCES]:
                 user.attributes[USER_ATTRIBUTE_SOURCES].append(connection.source.name)
 
+    def get_stages_to_append(self):
+        stages = []
+        if True:
+            stages.append(in_memory_stage(PostSourceStage))
+        return stages
+
     def dispatch(self, request: HttpRequest) -> HttpResponse:
         """Save data in the current flow to the currently pending user. If no user is pending,
         a new user is created."""
@@ -154,6 +161,8 @@ class UserWriteStageView(StageView):
             message = _("No Pending data.")
             self.logger.debug(message)
             return self.executor.stage_invalid(message)
+        for stage in self.get_stages_to_append():
+            self.executor.plan.insert_stage(stage)
         data = self.executor.plan.context[PLAN_CONTEXT_PROMPT]
         user, user_created = self.ensure_user()
         if not user:
