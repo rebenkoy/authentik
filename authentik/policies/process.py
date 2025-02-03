@@ -141,7 +141,8 @@ class PolicyProcess(PROCESS_CLASS):
     def run(self):  # pragma: no cover
         """Task wrapper to run policy checking"""
         try:
-            self.connection.send(self.profiling_wrapper())
+            a = self.profiling_wrapper()
+            self.connection.send(a)
         except Exception as exc:
             LOGGER.warning("Policy failed to run", exc=exception_to_string(exc))
             self.connection.send(PolicyResult(False, str(exc)))

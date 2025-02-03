@@ -35,8 +35,9 @@ def get_context_processors() -> list[EventContextProcessor]:
     """Get a list of all configured context processors"""
     from authentik.events.context_processors.asn import ASN_CONTEXT_PROCESSOR
     from authentik.events.context_processors.geoip import GEOIP_CONTEXT_PROCESSOR
+    from authentik.events.context_processors.django_session import DJANGO_SESSION_CONTEXT_PROCESSOR
 
-    processors_types = [ASN_CONTEXT_PROCESSOR, GEOIP_CONTEXT_PROCESSOR]
+    processors_types = [ASN_CONTEXT_PROCESSOR, GEOIP_CONTEXT_PROCESSOR, DJANGO_SESSION_CONTEXT_PROCESSOR]
     processors = []
     for _type in processors_types:
         if _type.configured():
