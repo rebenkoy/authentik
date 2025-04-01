@@ -18,7 +18,7 @@ from sentry_sdk import start_span
 from sentry_sdk.tracing import Span
 from structlog.stdlib import get_logger
 
-from authentik.core.models import AuthenticatedSession, User
+from authentik.core.models import AuthenticatedSession, User, Group
 from authentik.events.models import Event
 from authentik.lib.expression.exceptions import ControlFlowException
 from authentik.lib.utils.http import get_http_session
@@ -60,6 +60,7 @@ class BaseEvaluator:
             "ak_is_group_member": BaseEvaluator.expr_is_group_member,
             "ak_logger": get_logger(self._filename).bind(),
             "ak_user_by": BaseEvaluator.expr_user_by,
+            "ak_group_by": BaseEvaluator.expr_group_by,
             "ak_user_has_authenticator": BaseEvaluator.expr_func_user_has_authenticator,
             "ak_create_jwt": self.expr_create_jwt,
             "ip_address": ip_address,
@@ -138,6 +139,18 @@ class BaseEvaluator:
             users = User.objects.filter(**filters)
             if users:
                 return users.first()
+            return None
+        except FieldError:
+            return None
+
+
+    @staticmethod
+    def expr_group_by(**filters) -> User | None:
+        """Get user by filters"""
+        try:
+            groups = Group.objects.filter(**filters)
+            if groups:
+                return groups.first()
             return None
         except FieldError:
             return None
